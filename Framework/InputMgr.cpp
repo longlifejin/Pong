@@ -8,14 +8,19 @@ std::list<sf::Keyboard::Key> InputMgr::ingList;
 
 void InputMgr::Init()
 {
+    //for(auto GameObject : )
+
     //To-Do : 파일 입출력으로 키 세팅 하는 것 변경하기
     //Horizontal 가로축 입력
     AxisInfo infoH;
     infoH.axis = Axis::Horizontal;
     infoH.positives.push_back(sf::Keyboard::D);
     infoH.positives.push_back(sf::Keyboard::Right);
+    infoH.positives.push_back(MouseButtonToKey(sf::Mouse::Button::Right));
     infoH.negatives.push_back(sf::Keyboard::A);
     infoH.negatives.push_back(sf::Keyboard::Left);
+    infoH.negatives.push_back(MouseButtonToKey(sf::Mouse::Button::Left));
+
     infoH.sensi = 2.f;
     infoH.value = 0.f;
     axisInfoMap.insert({ infoH.axis, infoH });
@@ -49,16 +54,18 @@ void InputMgr::UpdateEvent(const sf::Event& ev)
         break;
     case sf::Event::MouseButtonPressed:
         // 채우기
+       
         if (!GetMouseButton(ev.mouseButton.button))
         {
-            ingList.push_back(ev.key.code);
-            downList.push_back(ev.key.code);
+            sf::Keyboard::Key button = MouseButtonToKey(ev.mouseButton.button);
+            ingList.push_back(button);
+            downList.push_back(button);
         }
         break;
     case sf::Event::MouseButtonReleased:
-        // 채우기
-        ingList.remove(ev.key.code);
-        upList.push_back(ev.key.code);
+        sf::Keyboard::Key button = MouseButtonToKey(ev.mouseButton.button);
+        ingList.remove(button);
+        upList.push_back(button);
         break;
     }
 }
@@ -163,26 +170,23 @@ int InputMgr::keyboardToMouse()
     return 0;
 }
 
-const sf::Vector2f& InputMgr::GetMousePos()
+sf::Vector2f InputMgr::GetMousePos()
 {
     // 채우기
-    return { 0.f,0.f };
+    return (sf::Vector2f)sf::Mouse::getPosition();
 }
 
-bool InputMgr::GetMouseButtonDown(sf::Mouse::Button key)
+bool InputMgr::GetMouseButtonDown(sf::Mouse::Button button)
 {
-    // 채우기
-    return std::find(downList.begin(), downList.end(), key) != downList.end();
+    return std::find(downList.begin(), downList.end(), MouseButtonToKey(button)) != downList.end();
 }
 
-bool InputMgr::GetMouseButtonUp(sf::Mouse::Button key)
+bool InputMgr::GetMouseButtonUp(sf::Mouse::Button button)
 {
-    // 채우기
-    return std::find(upList.begin(), upList.end(), key) != upList.end();
+    return std::find(upList.begin(), upList.end(), MouseButtonToKey(button)) != upList.end();
 }
 
-bool InputMgr::GetMouseButton(sf::Mouse::Button key)
+bool InputMgr::GetMouseButton(sf::Mouse::Button button)
 {
-    // 채우기
-    return std::find(ingList.begin(), ingList.end(), key) != ingList.end();
+    return std::find(ingList.begin(), ingList.end(), MouseButtonToKey(button)) != ingList.end();
 }

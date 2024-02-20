@@ -45,10 +45,20 @@ public:
 
 	int keyboardToMouse();
 
-	static const sf::Vector2f& GetMousePos();
+	static sf::Vector2f GetMousePos();
 	static bool GetMouseButtonDown(sf::Mouse::Button key);
 	static bool GetMouseButtonUp(sf::Mouse::Button key);
 	static bool GetMouseButton(sf::Mouse::Button key);
 
+	static sf::Keyboard::Key MouseButtonToKey(sf::Mouse::Button button)
+	{
+		// list에 넣을 때도 기존 keyboard값들이랑 겹치지 않게 더해준 것
+		return (sf::Keyboard::Key)(button + sf::Keyboard::Key::KeyCount);
+	}
+
+	static sf::Mouse::Button KeyToMouseButton(sf::Mouse::Button button)
+	{
+		return (sf::Mouse::Button)(button + sf::Keyboard::Key::KeyCount);
+	}
 };
 

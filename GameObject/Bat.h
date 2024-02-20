@@ -1,6 +1,6 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include "pch.h"
+#include <SFML/Graphics.hpp>
 
 class Bat
 {
@@ -9,6 +9,9 @@ protected:
 
 public:
 	Bat();
+
+	sf::FloatRect prevGlobalBounds;
+
 	float speed = 300.f;
 
 	sf::RectangleShape shape;
