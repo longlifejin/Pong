@@ -108,7 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\SFML-2.6.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.\SFML-2.6.1\include;.\Framework;.\GameObject;.\Scenes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -129,6 +129,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>.;.\SFML-2.6.1\include;.\Framework;.\GameObject;.\Scenes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -138,35 +139,53 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Ball.cpp" />
-    <ClCompile Include="Bat.cpp" />
-    <ClCompile Include="InputMgr.cpp">
+    <ClCompile Include="Framework\Framework.cpp" />
+    <ClCompile Include="GameObject\Ball.cpp" />
+    <ClCompile Include="GameObject\Bat.cpp" />
+    <ClCompile Include="GameObject\GameObject.cpp" />
+    <ClCompile Include="Framework\InputMgr.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="Pong.cpp" />
-    <ClCompile Include="Utils.cpp">
+    <ClCompile Include="Framework\SceneMgr.cpp" />
+    <ClCompile Include="Scenes\SceneGame.cpp" />
+    <ClCompile Include="Scenes\Scene.cpp" />
+    <ClCompile Include="GameObject\TextGo.cpp" />
+    <ClCompile Include="GameObject\UiScore.cpp" />
+    <ClCompile Include="Framework\Utils.cpp">
       <DeploymentContent>true</DeploymentContent>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ball.h" />
-    <ClInclude Include="Bat.h" />
-    <ClInclude Include="Defines.h">
+    <ClInclude Include="Framework\Framework.h" />
+    <ClInclude Include="GameObject\Ball.h" />
+    <ClInclude Include="GameObject\Bat.h" />
+    <ClInclude Include="Framework\Defines.h">
       <DeploymentContent>true</DeploymentContent>
     </ClInclude>
-    <ClInclude Include="InputMgr.h">
+    <ClInclude Include="Framework\ResourceMgr.h" />
+    <ClInclude Include="Framework\Singleton.h" />
+    <ClInclude Include="GameObject\GameObject.h" />
+    <ClInclude Include="Framework\InputMgr.h">
       <DeploymentContent>true</DeploymentContent>
     </ClInclude>
     <ClInclude Include="pch.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Utils.h">
+    <ClInclude Include="Framework\SceneMgr.h" />
+    <ClInclude Include="Scenes\SceneGame.h" />
+    <ClInclude Include="Scenes\Scene.h" />
+    <ClInclude Include="GameObject\TextGo.h" />
+    <ClInclude Include="GameObject\UiScore.h" />
+    <ClInclude Include="Framework\Utils.h">
       <DeploymentContent>true</DeploymentContent>
     </ClInclude>
   </ItemGroup>

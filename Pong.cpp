@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Bat.h"
 #include "Ball.h"
+#include "TextGo.h"
 
 int main()
 {
@@ -16,6 +17,9 @@ int main()
 
     sf::Clock clock;
 
+    TextGo* score;
+
+
     while (window.isOpen())
     {
         sf::Time deltaTime = clock.restart();
@@ -28,27 +32,26 @@ int main()
                 window.close();
 
             InputMgr::UpdateEvent(event);
-
         }
 
         InputMgr::Update(dt);
         
         if (!isBallActive && InputMgr::GetKeyDown(sf::Keyboard::Space))
         {
-            ball.Fire(fireDirection, 1000.f);
+            ball.Fire(fireDirection, 500.f);
             isBallActive = true;
         }
 
         bat.Update(dt);
         if (ball.isDead)
         {
-            isBallActive = true;
+            isBallActive = false;
             ball.Fire({0.f, 0.f}, 0.f);
             //게임 재시작 대기
         }
-        else if(ball.isBoundBat)
+        else
         {
-            //점수 추가
+            bat.Update(dt);
         }
 
         if (!isBallActive)

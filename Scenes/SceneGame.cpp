@@ -8,7 +8,6 @@ SceneGame::SceneGame(SceneIds id)
 
 void SceneGame::Init()
 {
-	Scene::Init();
 }
 
 void SceneGame::Release()
@@ -23,7 +22,6 @@ void SceneGame::Enter()
 
 void SceneGame::Exit()
 {
-	Scene::Exit();
 }
 
 void SceneGame::Update(float dt)

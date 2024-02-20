@@ -73,8 +73,8 @@ public:
 
 	T& Get(const std::string& filePath, bool load = true)
 	{
-		auto it = resources.find(filePath);
-		if (it != resources.end()) //찾은 경우
+		auto it = resourceMap.find(filePath);
+		if (it != resourceMap.end()) //찾은 경우
 			return *(it->second); //그럼 그거 걍 리턴
 
 		if (!load || !Load(filePath)) //없으면
@@ -82,7 +82,7 @@ public:
 			return Empty;
 		}
 
-		return *(resources.find(filePath)->second);
+		return *(resourceMap.find(filePath)->second);
 	}
 
 };
