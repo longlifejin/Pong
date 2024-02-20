@@ -21,6 +21,7 @@ void Ball::Fire(sf::Vector2f d, float s)
 
 
 //벽 충돌 처리 windowBounds
+//수정 필요
 void Ball::colCheck(sf::Vector2f d)
 {
 	sf::Vector2f pos = shape.getPosition();
