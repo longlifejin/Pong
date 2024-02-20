@@ -6,13 +6,13 @@ UiScore::UiScore(const std::string& name)
 {
 }
 
-void UiScore::SetScore(size_t score)
+void UiScore::SetScore(int score)
 {
 	this->score = score;
 	text.setString(scoreFormat + std::to_string(this->score));
 }
 
-void UiScore::AddScore(size_t score)
+void UiScore::AddScore(int score)
 {
 	this->score += score;
 	text.setString(scoreFormat + std::to_string(this->score));

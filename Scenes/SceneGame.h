@@ -1,9 +1,13 @@
 #pragma once
 #include "Scene.h"
 
+class UiScore;
+class TextGo;
+
 class SceneGame : public Scene
 {
 protected:
+	UiScore* uiScore;
 
 public:
 	SceneGame(SceneIds id);

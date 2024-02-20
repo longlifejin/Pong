@@ -25,6 +25,7 @@ public:
 	{
 		if (resourceMap.find(filePath) != resourceMap.end())
 		{
+			//std::cout << "load fail" << std::endl;
 			return false;
 		}
 

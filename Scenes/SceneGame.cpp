@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "SceneGame.h"
+#include "UiScore.h"
 
 SceneGame::SceneGame(SceneIds id)
 	:Scene(id)
@@ -8,6 +9,18 @@ SceneGame::SceneGame(SceneIds id)
 
 void SceneGame::Init()
 {
+	fontManager.Load("./Pong Bin/DS-DIGI.ttf");
+
+	uiScore = new UiScore("uiScore");
+	uiScore->Set(fontManager.Get("./Pong Bin/DS-DIGI.ttf"), "", 40, sf::Color::White);
+	uiScore->SetPosition({ 0.f,0.f });
+	uiScore->SetOrigin(Origins::TL);
+	uiScore->SetScore(0);
+	AddGameObject(uiScore);
+
+
+
+
 }
 
 void SceneGame::Release()
