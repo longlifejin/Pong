@@ -2,7 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include "Bat.h"
 #include "Ball.h"
-#include "TextGo.h"
 
 int main()
 {
@@ -19,6 +18,7 @@ int main()
 
     TextGo* score;
 
+    //Framework::Do();
 
     while (window.isOpen())
     {

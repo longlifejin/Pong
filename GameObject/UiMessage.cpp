@@ -1,24 +1,24 @@
 #include "pch.h"
-#include "UiScore.h"
+#include "UiMessage.h"
 
-UiScore::UiScore(const std::string& name)
+UiMessage::UiMessage(const std::string& name)
 	: TextGo(name)
 {
 }
 
-void UiScore::SetScore(int score)
+void UiMessage::SetScore(int score)
 {
 	this->score = score;
 	text.setString(scoreFormat + std::to_string(this->score));
 }
 
-void UiScore::AddScore(int score)
+void UiMessage::AddScore(int score)
 {
 	this->score += score;
 	text.setString(scoreFormat + std::to_string(this->score));
 }
 
-void UiScore::Reset()
+void UiMessage::Reset()
 {
 	SetScore(0);
 }

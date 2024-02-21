@@ -25,7 +25,7 @@ void Bat::Update(float dt)
 	pos.x += h * speed * dt;
 	shape.setPosition(pos);
 
-	std::cout << InputMgr::GetMouseButton(sf::Mouse::Left) << std::endl;
+	//std::cout << InputMgr::GetMouseButton(sf::Mouse::Left) << std::endl;
 }
 
 void Bat::Draw(sf::RenderWindow& window)
